@@ -20,7 +20,7 @@ git clone https://github.com/archeons-sudo/E-Votes.git
 2. Pindah ke directory `e-votes`
 
 ```bash
-cd cd E-Votes/
+cd E-Votes/
 ```
 
 3. Lakukan `composer install`
