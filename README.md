@@ -29,3 +29,4 @@ cd E-Votes/
 composer install
 ```
 
+4. Buat file dengan nama `.env`, lalu masukan isi file dari .env yang di berikan oleh `pembantu project`
