@@ -61,6 +61,13 @@ class Session extends BaseConfig
 
     /**
      * --------------------------------------------------------------------------
+     * Session Cookie Secure
+     * --------------------------------------------------------------------------
+     */
+    public bool $cookieSecure = false;
+
+    /**
+     * --------------------------------------------------------------------------
      * Session Match IP
      * --------------------------------------------------------------------------
      *
@@ -78,7 +85,7 @@ class Session extends BaseConfig
      *
      * How many seconds between CI regenerating the session ID.
      */
-    public int $timeToUpdate = 300;
+    public int $timeToUpdate = 0;
 
     /**
      * --------------------------------------------------------------------------

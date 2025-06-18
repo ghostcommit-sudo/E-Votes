@@ -40,7 +40,7 @@ class App extends BaseConfig
      * something else. If you have configured your web server to remove this file
      * from your site URIs, set this variable to an empty string.
      */
-    public string $indexPage = 'index.php';
+    public string $indexPage = '';
 
     /**
      * --------------------------------------------------------------------------
@@ -199,4 +199,20 @@ class App extends BaseConfig
      * @see http://www.w3.org/TR/CSP/
      */
     public bool $CSPEnabled = false;
+
+    public array $sessionDrivers = [
+        'files',    // using file system
+        'database', // using database system
+        'redis',    // using redis
+        'memcached',// using memcache
+        'array'     // using array
+    ];
+
+    public string $sessionDriver = 'files';
+    public string $sessionCookieName = 'ci_session';
+    public int $sessionExpiration = 7200;
+    public string $sessionSavePath = WRITEPATH . 'session';
+    public bool $sessionMatchIP = false;
+    public int $sessionTimeToUpdate = 300;
+    public bool $sessionRegenerateDestroy = false;
 }
