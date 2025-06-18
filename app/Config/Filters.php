@@ -12,6 +12,8 @@ use CodeIgniter\Filters\InvalidChars;
 use CodeIgniter\Filters\PageCache;
 use CodeIgniter\Filters\PerformanceMetrics;
 use CodeIgniter\Filters\SecureHeaders;
+use App\Filters\AdminAuthFilter;
+use App\Filters\StudentAuthFilter;
 
 class Filters extends BaseFilters
 {
@@ -34,6 +36,8 @@ class Filters extends BaseFilters
         'forcehttps'    => ForceHTTPS::class,
         'pagecache'     => PageCache::class,
         'performance'   => PerformanceMetrics::class,
+        'adminAuth'     => AdminAuthFilter::class,
+        'studentAuth'   => StudentAuthFilter::class,
     ];
 
     /**
@@ -69,13 +73,17 @@ class Filters extends BaseFilters
      */
     public array $globals = [
         'before' => [
-            // 'honeypot',
-            // 'csrf',
-            // 'invalidchars',
+            'csrf' => ['except' => [
+                'admin-system/login',
+                'admin-system/candidates/delete/*',
+                'admin-system/students/delete/*',
+                'admin-system/classes/delete/*',
+                'admin-system/periods/delete/*',
+                'auth/google/callback'
+            ]]
         ],
         'after' => [
-            // 'honeypot',
-            // 'secureheaders',
+            'toolbar',
         ],
     ];
 
@@ -103,5 +111,7 @@ class Filters extends BaseFilters
      *
      * @var array<string, array<string, list<string>>>
      */
-    public array $filters = [];
+    public array $filters = [
+        'studentAuth' => ['before' => ['vote/*', 'vote']],
+    ];
 }
